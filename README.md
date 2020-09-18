@@ -592,3 +592,95 @@ export default Movie;
   }
 
   ```
+
+-Router를 이용한 페이지 이동(react-router-dom)
+
+- npm install react-router-dom
+
+  - react-router-dom의 기본 사용
+
+  ```javascript
+  import React from "react";
+  import { HashRouter, Route } from "react-router-dom";
+  import About from "./routes/About";
+  //import {About as info } from "./routes/About"; => 이렇게 이름을 바꿔서 넣을 수 있다.
+
+  function App() {
+    return (
+      <HashRouter>
+        <Route path="/about" component={About} />
+      </HashRouter>
+    );
+  }
+
+  export default App;
+  ```
+
+  - Linkto를 이용한 SPA 동작(Link는 꼭 Router안에 있어야 한다!)
+
+  `Navigation.js`
+
+  ```javascript
+  import React from "react";
+  import { Link } from "react-router-dom";
+
+  function Navigation() {
+    return (
+      <div>
+        <Link to="/">Home</Link>
+        <Link to="about">About</Link>
+      </div>
+    );
+  }
+
+  export default Navigation;
+  ```
+
+  `App.js`
+
+  ```javascript
+  import React from "react";
+  import { HashRouter, Route } from "react-router-dom";
+  import Home from "./routes/Home";
+  import About from "./routes/About";
+  import Navigation from "./comp/Navigation";
+
+  function App() {
+    return (
+      <HashRouter>
+        <Navigation />
+        <Route path="/" exact={true} component={Home} />
+        <Route path="/about" component={About} />
+      </HashRouter>
+    );
+  }
+
+  export default App;
+  ```
+
+  - Link를 이용한 페이지 이동을 할 때, 객체정보를 담아서 주는게 가능하다(props로서 사용가능!).
+
+  ```javascript
+  import React from "react";
+  import { Link } from "react-router-dom";
+
+  function Navigation() {
+    return (
+      <div>
+        <Link to="/">Home</Link>
+        <Link
+          to={{
+            pathname: "/about",
+            state: {
+              fromNavigation: true,
+            },
+          }}
+        >
+          About
+        </Link>
+      </div>
+    );
+  }
+
+  export default Navigation;
+  ```
