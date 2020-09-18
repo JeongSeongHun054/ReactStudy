@@ -1,5 +1,7 @@
 # React Study
 
+# Release: https://JeongSeongHun054.github.io/ReactStudy
+
 ## 2020.09.10 Start
 
 - npm install npx -g
@@ -541,3 +543,52 @@ Movie.protoTypes = {
 
 export default Movie;
 ```
+
+- github pages를 이용한 배포
+
+  1. npm i gh-pages
+  2. package.json 설정 "homepage 추가", scripts에 "deploy" 추가
+
+  ```javascript
+  {
+  "name": "study",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "axios": "^0.20.0",
+    "eslint-config-prettier": "^6.11.0",
+    "gh-pages": "^3.1.0",
+    "prop-types": "^15.7.2",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-scripts": "3.4.3"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "deploy": "gh-pages -d build",
+    "predeploy": "npm run build"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  //"homepage": "https://{your github username}.github.io/{the name of your project in github}"
+  "homepage": "https://JeongSeongHun054.github.io/ReactStudy"
+  }
+
+  ```
